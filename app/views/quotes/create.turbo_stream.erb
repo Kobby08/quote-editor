@@ -1,0 +1,14 @@
+<!--These are al valid ways of presenting a turbo_stream views and partial -->
+
+<%# <%= turbo_stream.prepend "quotes", partial: 'quotes/quote', locals: {quote: @quote} %> 
+
+<%# <%= turbo_stream.prepend "quotes" do %>
+  <%# <%= render partial: "quotes/quote", locals: { quote: @quote } %> 
+<%# <% end %> 
+
+<%# <%= turbo_stream.prepend "quotes" do %> 
+  <%# <%= render @quote %> 
+<%# <% end %> 
+
+<%= turbo_stream.prepend "quotes", @quote %>
+<%= turbo_stream.update Quote.new, "" %>
