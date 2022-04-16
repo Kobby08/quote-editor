@@ -76,4 +76,4 @@ end
 
 # Project gems
 gem "simple_form"
-
+gem "devise"
