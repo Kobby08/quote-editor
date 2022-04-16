@@ -2,6 +2,9 @@ class Quote < ApplicationRecord
   # validations
   validates_presence_of :name
 
+  # associations
+  belongs_to :company
+
   # scopes
   scope :ordered, -> { order(id: :desc) }
 
