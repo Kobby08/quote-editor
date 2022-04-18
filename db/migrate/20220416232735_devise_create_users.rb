@@ -15,7 +15,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[7.0]
       t.datetime :remember_created_at
 
       ## Reference
-      t.integer :company_id, null: false
+      t.integer :company_id, null: false, index: true
 
       t.timestamps null: false
     end

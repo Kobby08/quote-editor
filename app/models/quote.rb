@@ -4,6 +4,7 @@ class Quote < ApplicationRecord
 
   # associations
   belongs_to :company
+  has_many :line_item_dates, dependent: :destroy
 
   # scopes
   scope :ordered, -> { order(id: :desc) }
