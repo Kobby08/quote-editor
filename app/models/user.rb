@@ -4,4 +4,9 @@ class User < ApplicationRecord
 
   # associations
   belongs_to :company
+
+  # public interface
+  def name
+    email.split('@').first.capitalize
+  end
 end
