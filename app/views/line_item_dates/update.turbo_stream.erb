@@ -1,0 +1,10 @@
+<%# Step 1: remove the form %>
+<%= turbo_stream.remove @line_item_date %>
+<%# Step 2: insert the updated date at the correct position %>
+<% if previous_date = @line_item_date.previous_date %>
+  <%= turbo_stream.after previous_date, partial: @line_item_date, locals: {quote: @quote} %>
+<% else %>
+  <%= turbo_stream.prepend "line_item_dates", partial: @line_item_date, locals: {quote: @quote}   %>
+<% end %>
+<%# Step 3: render flash msg %>
+<%= render_turbo_stream_flash_messages %>

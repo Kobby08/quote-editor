@@ -11,8 +11,9 @@ class LineItemDatesController < ApplicationController
 
     if @line_item_date.save
       respond_to do |format|
-        format.html do
-          redirect_to @quote, notice: 'Date was created successfully!'
+        format.html { redirect_to @quote, notice: 'Date created successfully!' }
+        format.turbo_stream do
+          flash.now[:notice] = 'Date created successfully!'
         end
       end
     else
@@ -28,6 +29,7 @@ class LineItemDatesController < ApplicationController
         format.html do
           redirect_to @quote, notice: 'Date was updated successfully!'
         end
+        format.turbo_stream { flash.now[:notice] = 'Date upated successfully!' }
       end
     else
       render :edit, status: 422
@@ -36,7 +38,12 @@ class LineItemDatesController < ApplicationController
 
   def destroy
     @line_item_date.destroy
-    redirect_to quote_path @quote, notice: 'Date was destroyed.'
+    respond_to do |format|
+      format.html do
+        redirect_to quote_path(@quote), notice: 'Date was destroyed.'
+      end
+      format.turbo_stream { flash.now[:notice] = 'Date was destroyed.' }
+    end
   end
 
   private
