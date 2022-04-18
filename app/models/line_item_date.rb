@@ -7,5 +7,5 @@ class LineItemDate < ApplicationRecord
   belongs_to :quote
 
   # scopes
-  scope ordered: -> { order(date: :asc) }
+  scope :ordered, -> { order(date: :asc) }
 end
