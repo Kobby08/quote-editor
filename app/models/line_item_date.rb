@@ -5,6 +5,7 @@ class LineItemDate < ApplicationRecord
 
   # associations
   belongs_to :quote
+  has_many :line_items, dependent: :destroy
 
   # scopes
   scope :ordered, -> { order(date: :asc) }
