@@ -12,6 +12,7 @@ class LineItemsController < ApplicationController
     if @line_item.save
       respond_to do |format|
         format.html { redirect_to @quote, notice: 'Item created successfully!' }
+        format.turbo_stream { flash.now[:notice] = 'Item created successfully' }
       end
     else
       render :new, status: 422
@@ -24,6 +25,7 @@ class LineItemsController < ApplicationController
     if @line_item.update(line_item_params)
       respond_to do |format|
         format.html { redirect_to @quote, notice: 'Item upated successfully!' }
+        format.turbo_stream { flash.now[:notice] = 'Item updated successfully' }
       end
     else
       render :edit, status: 422
@@ -34,6 +36,7 @@ class LineItemsController < ApplicationController
     @line_item.destroy
     respond_to do |format|
       format.html { redirect_to @quote, notice: 'Item was deleted!!' }
+      format.turbo_stream { flash.now[:notice] = 'Item was deleted!.' }
     end
   end
 
