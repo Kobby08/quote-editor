@@ -2,3 +2,5 @@
   <%= render @line_item, quote: @quote, line_item_date: @line_item_date %>
 <% end %>
 <%= render_turbo_stream_flash_messages %>
+<%# Update quote total %>
+<%= render_quote_total(@quote) %>

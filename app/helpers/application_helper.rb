@@ -14,4 +14,10 @@ module ApplicationHelper
   def nested_dom_id(*args)
     args.map { |arg| arg.respond_to?(:to_key) ? dom_id(arg) : arg }.join('_')
   end
+
+  def render_quote_total(quote)
+    turbo_stream.update dom_id(quote, :total) do
+      render 'quotes/total', quote: quote
+    end
+  end
 end

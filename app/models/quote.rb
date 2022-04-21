@@ -5,9 +5,15 @@ class Quote < ApplicationRecord
   # associations
   belongs_to :company
   has_many :line_item_dates, dependent: :destroy
+  has_many :line_items, through: :line_item_dates
 
   # scopes
   scope :ordered, -> { order(id: :desc) }
+
+  # interface
+  def total_price
+    line_items.sum(&:total_price)
+  end
 
   # callbacks
   # after_create_commit -> { broadcast_prepend_later_to 'quotes' }
